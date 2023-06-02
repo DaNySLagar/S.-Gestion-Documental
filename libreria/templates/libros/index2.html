@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block titulo %} Informes Recibidos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="d-flex justify-content-between  mb-3">
+            <div class="p-2 ">
+                <h4 class="text-start">Informes Recibidos</h4>
+            </div>
+
+            <div class="p-2">
+                <a name="" id="" class="btn btn-success me-md-2" href="{%url 'crear2' %}" role="button">Agregar nuevo
+                    informe</a>
+            </div>
+        </div>
+
+
+
+        <div class="table-responsive">
+            <table id="mytable" class="table table-hover table-striped" style="width: 100%;">
+                <thead >
+                    <tr class="table-success">
+                        <th scope="col" class="centered">ID</th>
+                        <th scope="col" class="centered">Desripción</th>
+                        <th scope="col" class="centered">Nro. Oficio</th>
+                        <th scope="col" class="centered">Oficina Emisora</th>
+                        <th scope="col" class="centered">Fecha de Recepción</th>
+                        <th scope="col" class="centered">Pendientes</th>
+                        <th scope="col" class="centered">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in libros %}
+                    <tr >
+                        <td class="centered">{{libro.id}}</td>
+                        <td class="centered">{{libro.descripcion}}</td>
+                        <td class="centered">{{libro.oficio}}</td>
+                        <td class="centered">{{libro.oficina_emi}}</td>
+                        <td class="centered">{{libro.f_recep}}</td>
+                        <td class="centered">  {% if libro.marcado == True %}
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                          {% else %}
+                            <i class="bi bi-x-circle-fill text-danger"></i>
+                          {% endif %}
+                        </td>
+                        <td class="centered">
+                            <a name="" id="" class="button-33"
+                                href="{% url 'descargar_archivo2' libro.id %}"><i class="bi bi-cloud-arrow-down"></i></a>
+                            
+                            <a name="" id="btn-editar" class="button-33" href="{% url 'editar2' libro.id%}"
+                                role="button"><i class="bi bi-pencil-square"></i></a>
+                            
+                            <a name="" id="" class="button-34" href="{% url 'eliminar2' libro.id%}"
+                                role="button" onclick="return confirmarEliminar();"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}

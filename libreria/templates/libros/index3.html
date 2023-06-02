@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block titulo %} Informes Recibidos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="d-flex justify-content-between  mb-3">
+            <div class="p-2 ">
+                <h4 class="text-start">Solicitudes emitidas</h4>
+            </div>
+
+            <div class="p-2">
+                <a name="" id="" class="btn btn-success me-md-2" href="{%url 'crear3' %}" role="button">Agregar nueva
+                    solicitud</a>
+            </div>
+        </div>
+
+
+
+        <div class="table-responsive">
+            <table id="mytable" class="table table-hover table-striped" style="width: 100%;">
+                <thead >
+                    <tr class="table-success">
+                        <th scope="col" class="centered">ID</th>
+                        <th scope="col" class="centered">Desripción</th>
+                        <th scope="col" class="centered">Oficina Destino</th>
+                        <th scope="col" class="centered">Fecha de Emisión</th>
+                        <th scope="col" class="centered">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in libros %}
+                    <tr >
+                        <td class="centered">{{libro.id}}</td>
+                        <td class="centered">{{libro.descripcion}}</td>
+                        <td class="centered">{{libro.oficina_dest}}</td>
+                        <td class="centered">{{libro.f_emision}}</td>
+                        <td class="centered">
+                            <a name="" id="" class="button-33"
+                                href="{% url 'descargar_archivo3' libro.id %}"><i class="bi bi-cloud-arrow-down"></i></a>
+                            
+                            <a name="" id="btn-editar" class="button-33" href="{% url 'editar3' libro.id%}"
+                                role="button"><i class="bi bi-pencil-square"></i></a>
+                            
+                            <a name="" id="" class="button-34" href="{% url 'eliminar3' libro.id%}"
+                                role="button" onclick="return confirmarEliminar();"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %}
+<div class="p-0 m-0 " style="overflow: hidden;">
+  <img src="static/img/aea2.jpg" alt="Imagen" class="img-fluid img-container">
+
+  <div class="overlay-text">
+
+      <h1 class="display-4 fw-bold">Bienvenidos al Gestor de Documentos de Yesmin</h1>
+      <p class="fs-4">Empezar a ingresar informes y solicitudes</p>
+      <a href="{%url 'libros'%}"><button class="btn btn-lg btnhome" type="button">Informes</button></a>
+      <a href="{%url 'libros3'%}"><button class="btn btn-lg btnhome" type="button">Solicitudes</button></a>
+      <a href="{%url 'libros5'%}"><button class="btn btn-lg btnhome" type="button">Vac. y Comp.</button></a>
+      
+      
+  </div>
+</div>
+
+
+{% endblock %}
+
+    

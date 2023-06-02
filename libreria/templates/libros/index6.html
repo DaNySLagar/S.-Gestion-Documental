@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block titulo %} Informes Recibidos {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+
+    <div class="card-body">
+        <div class="d-flex justify-content-between  mb-3">
+            <div class="p-2 ">
+                <h4 class="text-start">Personal</h4>
+            </div>
+
+            <div class="p-2">
+                <a name="" id="" class="btn btn-success me-md-2" href="{%url 'crear6' %}" role="button">Agregar nuevo</a>
+            </div>
+        </div>
+
+
+
+        <div class="table-responsive">
+            <table id="mytable" class="table table-hover table-striped" style="width: 100%;">
+                <thead >
+                    <tr class="table-success">
+                        <th scope="col" class="centered">ID</th>
+                        <th scope="col" class="centered">Nombres y apellidos</th>
+                        <th scope="col" class="centered">Condición Laboral</th>
+                        <th scope="col" class="centered">Vacaciones restantes</th>
+
+                        <th scope="col" class="centered">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in libros %}
+                    <tr >
+                        <td class="centered">{{libro.id}}</td>
+                        <td class="centered">{{libro.apellido_paterno}} {{libro.apellido_materno}} {{libro.nombres}}</td>
+                        
+                        <td class="centered">{{libro.get_condicion_display}}</td>
+                        <td class="centered">{{libro.dias_rest}}</td>
+                        <td class="centered">
+
+                            <a name="" id="btn-editar" class="button-33" href="{% url 'editar6' libro.id%}"
+                                role="button"><i class="bi bi-pencil-square"></i></a>
+                            
+                            <a name="" id="" class="button-34" href="{% url 'eliminar6' libro.id%}"
+                                role="button" onclick="return confirmarEliminar();"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}
